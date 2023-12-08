@@ -1,0 +1,147 @@
+﻿@model IEnumerable<GESTELEC.Models.Repos>
+@{
+    ViewBag.Title = "Repos List";
+}
+
+<style>
+    .table {
+        background-color: #f7f7f7;
+        border-radius: 5px;
+        border: none;
+        border-collapse: separate;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    th {
+        background-color: #34495e;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+
+    td {
+        background-color: white;
+        color: #34495e;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .btn {
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 5px;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .btn-default {
+        background-color: #95a5a6;
+    }
+
+        .btn-default:hover {
+            background-color: #7f8c8d;
+        }
+
+    h2 {
+        color: #34495e;
+        font-family: 'Arial', sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-top: 20px;
+    }
+
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+</style>
+
+<h2><b>Repos List</b></h2>
+
+
+
+@using (Html.BeginForm("SearchByOuvrier", "Repos", FormMethod.Post))
+{
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" name="ouvrierCIN" placeholder="Search by Ouvrier CIN" class="form-control" />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <div class="col-md-l">
+                        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success float-md-right" })
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+
+}  
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReposId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRepos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotifRepos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CIN)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReposId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRepos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotifRepos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CIN)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", new { id = item.ReposId })" class="btn btn-info">
+                    <span class="glyphicon glyphicon-info-sign"></span> Details
+                </a>
+                <a href="@Url.Action("Edit", new { id = item.ReposId })" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                </a>
+
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,38 @@
+﻿@model GESTELEC.Models.Vehicule
+
+@{
+    ViewBag.Title = "Delete Vehicule";
+}
+
+<h2>Delete Vehicule</h2>
+
+<h3>Are you sure you want to delete this Vehicule?</h3>
+<div>
+    <h4>Vehicule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="col-md-2">Immatricule</dt>
+        <dd class="col-md-10">@Html.DisplayFor(model => model.Immatricule)</dd>
+
+        <dt class="col-md-2">Model</dt>
+        <dd class="col-md-10">@Html.DisplayFor(model => model.Model)</dd>
+
+        <dt class="col-md-2">Type Carburant</dt>
+        <dd class="col-md-10">@Html.DisplayFor(model => model.TypeCarburant)</dd>
+
+        <dt class="col-md-2">Kilometrage Initial</dt>
+        <dd class="col-md-10">@Html.DisplayFor(model => model.KilometrageInitial)</dd>
+    </dl>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}

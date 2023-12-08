@@ -1,0 +1,164 @@
+﻿@model IEnumerable<GESTELEC.Models.Work>
+
+@{
+    ViewBag.Title = "Work List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .table {
+        background-color: #f7f7f7;
+        border-radius: 5px;
+        border: none;
+        border-collapse: separate;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    th {
+        background-color: #34495e;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+
+    td {
+        background-color: white;
+        color: #34495e;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .btn {
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 5px;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .btn-default {
+        background-color: #95a5a6;
+    }
+
+        .btn-default:hover {
+            background-color: #7f8c8d;
+        }
+
+    h2 {
+        color: #34495e;
+        font-family: 'Arial', sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-top: 20px;
+    }
+
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+</style>
+
+
+<h2><b>Work List</b></h2>
+
+
+    
+
+
+
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-6">
+                @using (Html.BeginForm("SearchByFilter", "Work", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    <div class="form-group">
+                        <label for="filterOption">Search By:</label>
+                        <div class="input-group">
+                            <select class="form-control" name="filterOption">
+                                <option value="ouvrierCIN">Ouvrier CIN</option>
+                                <option value="pyloneNumero">Pylone Numero</option>
+                            </select>
+                            @Html.TextBox("searchValue", null, new { @class = "form-control ml-2" })
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-6">
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success float-md-right" })
+            </div>
+        </div>
+
+
+
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.WorkId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OuvrierCIN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PyloneNumero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OuvrierCIN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PyloneNumero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", new { id = item.WorkId })" class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span> Details</a>
+                        <a href="@Url.Action("Edit", new { id = item.WorkId })" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>

@@ -1,0 +1,119 @@
+﻿@model GESTELEC.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<style>
+
+    .designlogin {
+        margin: 0 auto;
+        width: 400px;
+        padding: 40px;
+        background: linear-gradient(#141e30, #243b55);
+        border-radius: 10px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        color: #fff;
+    }
+
+        .designlogin h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            text-align: center;
+        }
+
+        .designlogin .form-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .designlogin .form-control {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+
+            .designlogin .form-control:focus,
+            .designlogin .form-control:valid {
+                border-bottom-color: #03e9f4;
+            }
+
+                .designlogin .form-control:focus ~ label,
+                .designlogin .form-control:valid ~ label {
+                    top: -20px;
+                    left: 0;
+                    color: #03e9f4;
+                    font-size: 12px;
+                }
+
+            .designlogin .form-control ~ label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #fff;
+                pointer-events: none;
+                transition: .5s;
+            }
+
+        .designlogin .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            margin-top: 40px;
+            color: #03e9f4;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+            .designlogin .btn-primary:hover {
+                background: #03e9f4;
+                color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+            }
+
+
+
+
+
+</style>
+
+
+
+<div class="designlogin">
+    <h2>Login</h2>
+
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    }
+    </div>

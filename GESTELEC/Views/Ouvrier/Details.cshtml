@@ -1,0 +1,131 @@
+﻿@model GESTELEC.Models.Ouvrier
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #2c3e50;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        max-width: 400px; /* Adjust the width as per your preference */
+        margin: 0 auto; /* Center the container horizontally */
+    }
+
+        .detail h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .detail dl {
+            margin-bottom: 20px;
+        }
+
+        .detail dt {
+            font-weight: bold;
+        }
+
+        .detail dd {
+            margin-left: 0;
+        }
+
+        .detail p {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .detail a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1abc9c;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .detail a:hover {
+                background-color: #16a085;
+            }
+</style>
+<div class="detail">
+
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Ouvrier</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CIN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CIN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NomComplet)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NomComplet)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ville)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ville)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Telephone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateNaissance)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateDebutActivite)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateDebutActivite)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Poste)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Poste)
+            </dd>
+
+        </dl>
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CIN }) |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+    </div>
+

@@ -1,0 +1,83 @@
+﻿@model GESTELEC.Models.Vehicule
+
+@{
+    ViewBag.Title = "Vehicule Details";
+}
+<style>
+    .detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #2c3e50;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        max-width: 400px; /* Adjust the width as per your preference */
+        margin: 0 auto; /* Center the container horizontally */
+    }
+
+        .detail h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .detail dl {
+            margin-bottom: 20px;
+        }
+
+        .detail dt {
+            font-weight: bold;
+        }
+
+        .detail dd {
+            margin-left: 0;
+        }
+
+        .detail p {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .detail a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1abc9c;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .detail a:hover {
+                background-color: #16a085;
+            }
+</style>
+<div class="detail">
+
+    <h2>Vehicule Details</h2>
+
+    <div>
+        <h4>Vehicule</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="col-md-2">Immatricule</dt>
+            <dd class="col-md-10">@Html.DisplayFor(model => model.Immatricule)</dd>
+
+            <dt class="col-md-2">Model</dt>
+            <dd class="col-md-10">@Html.DisplayFor(model => model.Model)</dd>
+
+            <dt class="col-md-2">Type Carburant</dt>
+            <dd class="col-md-10">@Html.DisplayFor(model => model.TypeCarburant)</dd>
+
+            <dt class="col-md-2">Kilometrage Initial</dt>
+            <dd class="col-md-10">@Html.DisplayFor(model => model.KilometrageInitial)</dd>
+        </dl>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Immatricule }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-default" })
+    </p>
+    </div>

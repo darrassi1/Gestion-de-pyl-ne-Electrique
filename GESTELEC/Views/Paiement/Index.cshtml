@@ -1,0 +1,136 @@
+﻿@model IEnumerable<GESTELEC.Models.Paiement>
+
+@{
+    ViewBag.Title = "Paiement List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table {
+        background-color: #f7f7f7;
+        border-radius: 5px;
+        border: none;
+        border-collapse: separate;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    th {
+        background-color: #34495e;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+
+    td {
+        background-color: white;
+        color: #34495e;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .btn {
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 5px;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .btn-default {
+        background-color: #95a5a6;
+    }
+
+        .btn-default:hover {
+            background-color: #7f8c8d;
+        }
+
+    h2 {
+        color: #34495e;
+        font-family: 'Arial', sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-top: 20px;
+    }
+
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+</style>
+
+
+<h2><b>Paiement List</b></h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("SearchByFilter", "Paiement", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            <div class="form-group">
+                <label for="filterOption">Search By:</label>
+                <div class="input-group">
+                    <select class="form-control" name="filterOption">
+                        <option value="ouvrierCIN">Ouvrier CIN</option>
+                        <option value="pyloneId">Pylone ID</option>
+                    </select>
+                    @Html.TextBox("searchValue", null, new { @class = "form-control ml-2" })
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-6">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success float-md-right" })
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PaiementId)</th>
+            <th>@Html.DisplayNameFor(model => model.Montant)</th>
+            <th>@Html.DisplayNameFor(model => model.DatePaiement)</th>
+            <th>@Html.DisplayNameFor(model => model.CIN)</th>
+            <th>@Html.DisplayNameFor(model => model.PyloneId)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.PaiementId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Montant)</td>
+                <td>@Html.DisplayFor(modelItem => item.DatePaiement)</td>
+                <td>@Html.DisplayFor(modelItem => item.CIN)</td>
+                <td>@Html.DisplayFor(modelItem => item.PyloneId)</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.PaiementId }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PaiementId }, new { @class = "btn btn-primary btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
